@@ -1,51 +1,21 @@
-# LIBRARY-MANAGEMENT-SYSTEM-
-A menu-driven Java Library Management System showcasing OOP: abstract classes, inheritance, runtime polymorphism, method overloading, and custom exception handling.t
-# 📚 Library Management System
-
-> A console-based Library Management System built in Java, demonstrating core Object-Oriented Programming concepts as a university group assignment.
-
-![Java](https://img.shields.io/badge/Java-8%2B-ED8B00?style=flat&logo=openjdk&logoColor=white)
-![OOP](https://img.shields.io/badge/Paradigm-OOP-blue?style=flat)
-![Console](https://img.shields.io/badge/Interface-Console-lightgrey?style=flat)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat)
+# Library Management System
+### A Console-Based Java OOP Project
 
 ---
 
-## 📖 About
-
-This project manages **Books**, **Members**, **Librarians**, and **Borrow/Return** operations through a menu-driven console interface. It is designed to clearly demonstrate every major OOP concept covered in a university-level Java course.
-
----
-
-## ✨ Features
-
-| # | Feature |
-|---|---------|
-| 1 | ➕ Add a book (with or without ISBN) |
-| 2 | 📋 View all books in a formatted table |
-| 3 | 👤 Register a new member |
-| 4 | 📤 Borrow a book |
-| 5 | 📥 Return a book |
-| 6 | 🔍 Search books by keyword, or by title + author |
-| 7 | 📑 View all books currently borrowed by a member |
-| 8 | 👥 View all registered members |
-| 9 | 🔬 Display all persons *(Runtime Polymorphism demo)* |
-
----
-
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 LibraryManagementSystem/
 ├── src/
 │   ├── model/
-│   │   ├── Person.java          ← Abstract base class
-│   │   ├── Member.java          ← Extends Person
-│   │   ├── Librarian.java       ← Extends Person
-│   │   └── Book.java            ← Book entity
+│   │   ├── Person.java          ← Abstract base class (Encapsulation + Abstraction)
+│   │   ├── Member.java          ← Extends Person (Inheritance + Overriding)
+│   │   ├── Librarian.java       ← Extends Person (Inheritance + Overriding)
+│   │   └── Book.java            ← Entity class (Encapsulation + Overloaded constructors)
 │   │
 │   ├── service/
-│   │   └── LibraryService.java  ← All business logic
+│   │   └── LibraryService.java  ← Business logic (Overloading + Polymorphism)
 │   │
 │   ├── exception/
 │   │   ├── BookNotFoundException.java
@@ -55,42 +25,36 @@ LibraryManagementSystem/
 │   │   └── BorrowLimitExceededException.java
 │   │
 │   └── main/
-│       └── Main.java            ← Entry point & menu UI
+│       └── Main.java            ← Entry point, menu-driven UI
 │
-├── out/                         ← Compiled .class files (git-ignored)
-├── compile.sh                   ← One-command build & run script
+├── out/                         ← Compiled .class files (auto-created)
+├── compile.sh
 └── README.md
 ```
 
 ---
 
-## 🧠 OOP Concepts Demonstrated
+## OOP Concepts Map
 
-| Concept | Where & How |
-|---------|------------|
-| **Classes & Objects** | `Book`, `Member`, `Librarian`, `LibraryService` instantiated in `Main.java` |
-| **Constructors** | Every model class uses parameterized constructors; subclasses call `super()` |
-| **Encapsulation** | All fields are `private`; exposed only through getters and setters |
-| **Inheritance** | `Member` and `Librarian` both extend the abstract `Person` class |
-| **Polymorphism** | `for (Person p : members)` → `p.displayInfo()` resolves to the correct subclass at runtime |
-| **Method Overloading** | `addBook()` has 3 versions; `searchBook()` has 2; `Book` has 2 constructors |
-| **Method Overriding** | `getRole()` and `displayInfo()` overridden in both `Member` and `Librarian`; `toString()` in `Book` |
-| **Exception Handling** | 5 custom checked exceptions; multi-`catch` blocks in `Main.java` |
-| **Packages** | Cleanly separated into `model`, `service`, `exception`, and `main` |
+| Concept              | Where Demonstrated                                                  |
+|----------------------|---------------------------------------------------------------------|
+| Classes & Objects    | Book, Member, Librarian, LibraryService instances in Main           |
+| Constructors         | All model classes have parameterized constructors                   |
+| Encapsulation        | All fields private; accessed via getters/setters only               |
+| Inheritance          | Member → Person, Librarian → Person                                 |
+| Polymorphism         | `Person p = new Member(...)` → `p.displayInfo()` calls Member's    |
+| Method Overloading   | `addBook()` × 3, `searchBook()` × 2, `Book()` constructor × 2      |
+| Method Overriding    | `getRole()` and `displayInfo()` overridden in Member & Librarian    |
+| Exception Handling   | 5 custom exceptions, multi-catch in Main.java                       |
+| Packages             | model / service / exception / main                                  |
 
 ---
 
-## 🚀 Getting Started
+## Compilation & Running
 
-### Prerequisites
-- Java JDK 8 or higher
-- A terminal / command prompt
-
-### Compile
-
+### Step 1 – Compile
 ```bash
 mkdir -p out
-
 javac -d out \
   src/model/Person.java \
   src/model/Book.java \
@@ -105,14 +69,12 @@ javac -d out \
   src/main/Main.java
 ```
 
-### Run
-
+### Step 2 – Run
 ```bash
 java -cp out main.Main
 ```
 
-### Or use the convenience script
-
+### Or use the provided script
 ```bash
 chmod +x compile.sh
 ./compile.sh
@@ -120,56 +82,57 @@ chmod +x compile.sh
 
 ---
 
-## 🗃️ Pre-loaded Sample Data
+## Sample Data (pre-loaded)
 
-The system boots with sample data so every feature can be tested immediately.
+| Books         | Members            | Librarians       |
+|---------------|--------------------|------------------|
+| B001 – Clean Code       | M001 – Alice Johnson | L001 – Dr. Sarah Chen |
+| B002 – The Pragmatic Programmer | M002 – Bob Williams  | L002 – Mr. James Park |
+| B003 – Introduction to Algorithms | M003 – Carol Davis |              |
+| B004 – Design Patterns  |                    |                  |
+| B005 – The Great Gatsby |                    |                  |
+| B006 – 1984             |                    |                  |
+| B007 – Effective Java   |                    |                  |
 
-**Books**
-
-| ID | Title | Author | Genre |
-|----|-------|--------|-------|
-| B001 | Clean Code | Robert C. Martin | Programming |
-| B002 | The Pragmatic Programmer | Andrew Hunt | Programming |
-| B003 | Introduction to Algorithms | Thomas Cormen | Computer Science |
-| B004 | Design Patterns | Gang of Four | Software Engineering |
-| B005 | The Great Gatsby | F. Scott Fitzgerald | Fiction |
-| B006 | 1984 | George Orwell | Dystopian Fiction |
-| B007 | Effective Java | Joshua Bloch | Programming |
-
-**Members**
-
-| ID | Name | Pre-borrowed |
-|----|------|-------------|
-| M001 | Alice Johnson | B001, B005 |
-| M002 | Bob Williams | B003 |
-| M003 | Carol Davis | *(none)* |
-
-**Librarians:** Dr. Sarah Chen (Reference & Research), Mr. James Park (Circulation)
+Alice (M001) already has B001 and B005 borrowed.
+Bob (M002) already has B003 borrowed.
 
 ---
 
-## 🔬 Key OOP Design Decisions
+## Menu Options
 
-**Why is `Person` abstract?**
-`Person` declares `getRole()` as abstract, creating a compile-time contract. Java will not allow `Member` or `Librarian` to be instantiated without providing their own implementation — this is the essence of abstraction.
-
-**How does Runtime Polymorphism work here?**
-In `LibraryService.displayAllPersons()`, both `members` and `librarians` lists are iterated using a `Person` reference. The JVM decides at runtime which version of `displayInfo()` to call — `Member`'s or `Librarian`'s. The calling code never needs to know the concrete type.
-
-**Why do overloaded methods delegate upward?**
-`addBook(id, title, author, genre)` internally calls `addBook(new Book(...))`. This keeps all validation logic in one place and avoids code duplication — a core principle of clean design.
-
-**Why are exceptions checked (not runtime)?**
-All five custom exceptions extend `Exception`, not `RuntimeException`. This forces every caller to explicitly handle them, making error paths visible and intentional in the API.
-
----
-
-## 👨‍💻 Authors
-
-> University Group Assignment — Object-Oriented Programming
+```
+1. Add Book
+2. View All Books
+3. Register Member
+4. Borrow Book
+5. Return Book
+6. Search Book
+7. Show Borrowed Books (by Member)
+8. View All Members
+9. View All Persons  [Polymorphism Demo]
+0. Exit
+```
 
 ---
 
-## 📄 License
+## Key Learning Points
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+1. **`getRole()` is abstract** in Person — Java forces both Member and Librarian
+   to provide their own implementation. This is the contract of abstraction.
+
+2. **`displayInfo()` is overridden** — both subclasses call `super.displayInfo()`
+   first, then append their own fields. This is method overriding with super usage.
+
+3. **Runtime Polymorphism (Option 9)** — `List<Member>` is iterated as
+   `for (Person p : members)`. The call `p.displayInfo()` dispatches to
+   `Member.displayInfo()` at runtime, not `Person.displayInfo()`.
+
+4. **Method Overloading** — `addBook()` has three forms:
+   - `addBook(Book book)`
+   - `addBook(String id, String title, String author, String genre)`
+   - `addBook(String id, String title, String author, String genre, String isbn)`
+   All lower overloads delegate upward to the first.
+
+5. **Exception Hierarchy** — All custom exceptions extend `Exception` (checked),
+   forcing callers to either handle or declare them. This is good API design.
